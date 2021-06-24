@@ -33,7 +33,7 @@ function sortAndMerge( buffer, left, right) {
     while ( leftIndex < left.length ) {
         if ( rightIndex < right.length ){
 
-            console.log( '💾 ---BUFFER----', see(buffer));
+            console.log( '💾 ---1 BUFFER----', see(buffer));
             console.log( '🟡 B:', bufferIndex, '🟢 L: ', leftIndex, '🔵 R:', rightIndex);
 
             if ( left[leftIndex] <= right[rightIndex] ){
@@ -51,7 +51,7 @@ function sortAndMerge( buffer, left, right) {
         } else {
 
 
-            console.log( '💾 ---BUFFER----', see(buffer));
+            console.log( '💾 ---2 BUFFER----', see(buffer));
             console.log( '🟡 B:', bufferIndex, '🟢 L: ', leftIndex, '🔵 R:', rightIndex);
     
             buffer[bufferIndex] = left[leftIndex];
@@ -65,7 +65,7 @@ function sortAndMerge( buffer, left, right) {
     while ( rightIndex < right.length ) {
 
        
-        console.log( '💾 ---BUFFER----', see(buffer));
+        console.log( '💾 ---3 BUFFER----', see(buffer));
         console.log( '🟡 B:', bufferIndex, '🟢 L: ', leftIndex, '🔵 R:', rightIndex);
 
         buffer[bufferIndex] = right[rightIndex];
@@ -90,7 +90,7 @@ function mergeSort( buffer ){
     const right =  getArrayRight( buffer );
     console.log( '✂️ 👉 ---RIGHT SLICE---', right);
   
-    mergeSort( left );
+    mergeSort( left ); // sincrona la recursividad & closure
     console.log( '👈 🌱 ---LEFT BRANCH---', left);
     //...
     mergeSort( right );
@@ -99,7 +99,6 @@ function mergeSort( buffer ){
     sortAndMerge( buffer, left, right);
 }
 
-
 var unsorted1 = [9,2,1,5];
 
 console.log( '❌ ---INITIAL---', unsorted1);
@@ -107,4 +106,41 @@ console.log( '❌ ---INITIAL---', unsorted1);
 mergeSort(unsorted1);
 
 console.log( '✔️ ---FINAL---', unsorted1);
+
+// BigO Notation:
+// n is the NUMBER (n) of elements in the array and it's represented in the x axis.
+// the y axis represents the number of OPERATIONS (o) in one or many iterations witch in the end are time.
+
+// BigO Notation: 
+// If the algorithm -splits in two the array recursively- it costs log(n) iterations.
+// If each element is pointed at at only one time we multiply by n.
+
+// BigO O(nLog(n)) HIGH performance
+// nLog(n)
+// Operations = elements * log(elements)
+// O = n * log(n)
+
+// 0.001 EACH OPERATION
+// O = 5 * log (5) = 3.5 operaciones
+// O = 5 * log (5) = 3.5 milisegundos en ejecutarse = .0035 segundos 
+
+// 0.001 EACH OPERATION
+// O = 10,000 * log (10,000) = 40,000 operaciones 
+// O = 10,000 * log (10,000) = 40,000 milisegundos en ejecutarse = 40 segundos
+
+// BigO O(n^2) LOW performance
+// O = n^2 
+// Operations = elements * elements
+// O = n*n
+
+// 0.001 EACH OPERATION
+// O = 5 * 5 = 25 operaciones
+// O = 5 * 5 = 25 milisegundos en ejecutarse = .025 segundos 
+
+// 0.001 EACH OPERATION
+// O = 100,000 * 100,000 = 10,000,000,000 operaciones
+// O = 100,000 * 100,000 = 10,000,000,000 milisegundos en ejecutarse = 19 años
+
+
+
 
