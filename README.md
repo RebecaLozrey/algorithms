@@ -1,4 +1,5 @@
-## Run in the terminal with NodeJS
+# Run in the terminal with NodeJS
 
-*Command*
-node merge-sort.js
+## Command
+
+`node merge-sort.js`
